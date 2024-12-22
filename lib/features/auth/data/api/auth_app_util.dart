@@ -17,4 +17,10 @@ class AuthAppUtil {
     final result = await _service.login(body);
     return UserMapper.fromApi(result);
   }
+
+  Future<void> logout({
+    required String uuid,
+  }) async {
+    await _service.logout(uuid);
+  }
 }

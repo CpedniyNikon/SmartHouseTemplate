@@ -9,4 +9,10 @@ class MockService implements Service {
     final response = {'email': 'test.email', 'password': 'test.password'};
     return ApiUser.fromApi(response);
   }
+
+  @override
+  Future<void> logout(String uuid) async {
+    await Future.delayed(const Duration(seconds: 1));
+    final _ = {};
+  }
 }

@@ -18,7 +18,7 @@ class _LoginLayoutState extends State<LoginLayout> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        BlocConsumer<AuthBloc, AuthState>(
+        BlocBuilder<AuthBloc, AuthState>(
           builder: (BuildContext context, AuthState state) {
             return switch (state) {
               AuthInitialState _ => const Text('Войдите в учетную запись'),
@@ -27,11 +27,6 @@ class _LoginLayoutState extends State<LoginLayout> {
                 Text('ошибка при авторизации ${state.errorToShow}'),
               AuthState _ => throw const Placeholder(),
             };
-          },
-          listener: (context, state) {
-            if (state is AuthSuccessState) {
-              context.go("/home");
-            }
           },
         ),
         const AuthorizationForm(),

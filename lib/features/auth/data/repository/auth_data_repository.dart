@@ -12,4 +12,9 @@ class AuthDataRepository extends AuthRepository {
   Future<UserEntity> login({required String email, required String password}) {
     return _apiUtil.login(email: email, password: password);
   }
+
+  @override
+  Future<void> logout({required String uuid}) {
+    return _apiUtil.logout(uuid: uuid);
+  }
 }
