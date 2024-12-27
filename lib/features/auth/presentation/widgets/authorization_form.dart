@@ -20,9 +20,8 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
       width: 927,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(),
         borderRadius: BorderRadius.circular(
-          5.0,
+          10,
         ),
       ),
       child: Padding(

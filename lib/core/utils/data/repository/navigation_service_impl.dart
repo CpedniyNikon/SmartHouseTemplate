@@ -10,4 +10,9 @@ class NavigationServiceImpl implements INavigationService {
   void navigateToHome() {
     _router.go('/home');
   }
+
+  @override
+  void navigateToLogin() {
+    _router.go('/login');
+  }
 }

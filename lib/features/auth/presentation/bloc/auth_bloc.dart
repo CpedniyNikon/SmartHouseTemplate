@@ -23,5 +23,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _onLogout(LogOutEvent event, Emitter<AuthState> emit) {
     _authRepository.logout(uuid: 'uuid');
     emit(AuthInitialState());
+    _navigationService.navigateToLogin();
   }
 }

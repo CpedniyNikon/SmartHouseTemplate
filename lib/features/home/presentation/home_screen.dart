@@ -16,17 +16,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthBloc, AuthState>(
-      listenWhen: (previous, current) => previous != current,
-      listener: (context, state) {
-        if (state is AuthInitialState) {
-          context.go('/login');
-        }
-      },
-      child: const Scaffold(
-        appBar: HomeAppbar(),
-        body: Body(),
-      ),
+    return const Scaffold(
+      appBar: HomeAppbar(),
+      body: Body(),
     );
   }
 }
