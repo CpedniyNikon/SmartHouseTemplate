@@ -4,4 +4,5 @@ part of 'bloc_bloc.dart';
 sealed class HomeState {}
 
 final class HomeInitialState extends HomeState {}
+
 final class HomeFetchedState extends HomeState {}
