@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_event.dart';
@@ -20,9 +19,8 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
       width: 927,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(),
         borderRadius: BorderRadius.circular(
-          5.0,
+          10,
         ),
       ),
       child: Padding(

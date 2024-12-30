@@ -6,6 +6,8 @@ import 'package:vikrf_thesis/core/internal/dependencies/set_up.dart';
 import 'package:vikrf_thesis/features/auth/domain/repository/auth_repository.dart';
 import 'package:vikrf_thesis/core/utils/domain/repository/navigation_service.dart';
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:vikrf_thesis/features/home/domain/repository/home_repository.dart';
+import 'package:vikrf_thesis/features/home/presentation/bloc/bloc_bloc.dart';
 
 import 'core/internal/application.dart';
 
@@ -18,6 +20,10 @@ Future<void> main() async {
         BlocProvider(
           create: (BuildContext context) => AuthBloc(
               GetIt.I<AuthRepository>(), GetIt.I<INavigationService>()),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => HomeBloc(
+              GetIt.I<HomeRepository>()),
         ),
       ],
       child: const Application(),

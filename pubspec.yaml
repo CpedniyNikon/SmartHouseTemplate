@@ -20,6 +20,10 @@ dependencies:
   dio: ^5.7.0
 
   cupertino_icons: ^1.0.8
+  fl_chart: ^0.70.0
+  flutter_svg: ^2.0.16
+  url_launcher: ^6.3.1
+  dartx: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -33,10 +37,15 @@ flutter:
 
   assets:
     - assets/bgs/
+    - assets/icons/
+    - assets/fonts/
+    - assets/data/
 
   fonts:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter_24pt-Regular.ttf
           weight: 400
-
+    - family: Digital
+      fonts:
+        - asset: assets/fonts/digital-7.ttf
