@@ -5,4 +5,8 @@ sealed class HomeState {}
 
 final class HomeInitialState extends HomeState {}
 
-final class HomeFetchedState extends HomeState {}
+final class HomeFetchedState extends HomeState {
+  final MenuList showingChartType;
+
+  HomeFetchedState({required this.showingChartType});
+}

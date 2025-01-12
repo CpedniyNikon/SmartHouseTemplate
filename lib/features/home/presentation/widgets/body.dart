@@ -1,87 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:vikrf_thesis/core/utils/app_colors.dart';
 import 'package:vikrf_thesis/core/utils/app_dimens.dart';
-import 'package:vikrf_thesis/core/utils/chart_type.dart';
-import 'package:vikrf_thesis/features/home/presentation/widgets/menu.dart';
-import 'package:dartx/dartx.dart';
+import 'package:vikrf_thesis/features/home/presentation/bloc/bloc_bloc.dart';
+import 'package:vikrf_thesis/features/home/presentation/widgets/chart_holder.dart';
+import 'package:vikrf_thesis/features/home/presentation/widgets/chart_samples.dart';
 
-class Body extends StatelessWidget {
-  Body({super.key, required this.showingChartType}) {
-    _initMenuItems();
-  }
+class Body extends StatefulWidget {
+  const Body({super.key});
 
-  void _initMenuItems() {
-    _menuItemsIndices = {};
-    _menuItems = ChartType.values.mapIndexed(
-      (int index, ChartType type) {
-        _menuItemsIndices[type] = index;
-        return ChartMenuItem(
-          type,
-          type.displayName,
-          type.assetIcon,
-        );
-      },
-    ).toList();
-  }
+  @override
+  State<Body> createState() => _BodyState();
+}
 
-  final ChartType showingChartType;
-  late final Map<ChartType, int> _menuItemsIndices;
-  late final List<ChartMenuItem> _menuItems;
+class _BodyState extends State<Body> {
+  final samples = ChartSamples.samples;
 
   @override
   Widget build(BuildContext context) {
-    final selectedMenuIndex = _menuItemsIndices[showingChartType]!;
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        final needsDrawer = constraints.maxWidth <=
-            AppDimens.menuMaxNeededWidth + AppDimens.chartBoxMinWidth;
-        return Column(
-          children: [
-            const Divider(height: 0, color: Colors.black),
-            Expanded(
-              child: Container(
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height,
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                ),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Image.asset(
-                        'assets/bgs/bg.png',
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: AppDimens.menuMaxNeededWidth,
-                          child: AppMenu(
-                            menuItems: _menuItems,
-                            currentSelectedIndex: selectedMenuIndex,
-                            onItemSelected: (newIndex, chartMenuItem) {
-                              context.go('/${chartMenuItem.chartType.name}');
-                              if (needsDrawer) {
-                                /// to close the drawer
-                                Navigator.of(context).pop();
-                              }
-                            },
-                            onBannerClicked: () => () {},
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+    return Container(
+      color: AppColors.menuBackground,
+      child: BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+        if (state is HomeFetchedState) {
+          return MasonryGridView.builder(
+            itemCount: samples[state.showingChartType]!.length,
+            key: ValueKey(state.showingChartType),
+            padding: const EdgeInsets.only(
+              left: AppDimens.chartSamplesSpace,
+              right: AppDimens.chartSamplesSpace,
+              top: AppDimens.chartSamplesSpace,
+              bottom: AppDimens.chartSamplesSpace + 68,
             ),
-          ],
-        );
-      },
+            crossAxisSpacing: AppDimens.chartSamplesSpace,
+            mainAxisSpacing: AppDimens.chartSamplesSpace,
+            itemBuilder: (BuildContext context, int index) {
+              return ChartHolder(chartSample: samples[state.showingChartType]![index]);
+            },
+            gridDelegate: const SliverSimpleGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 600,
+            ),
+          );
+        }
+        return Container();
+      }),
     );
   }
 }

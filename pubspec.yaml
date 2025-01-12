@@ -24,6 +24,7 @@ dependencies:
   flutter_svg: ^2.0.16
   url_launcher: ^6.3.1
   dartx: ^1.2.0
+  flutter_staggered_grid_view: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +40,6 @@ flutter:
     - assets/bgs/
     - assets/icons/
     - assets/fonts/
-    - assets/data/
 
   fonts:
     - family: Inter
