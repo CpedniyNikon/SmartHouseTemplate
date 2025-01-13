@@ -8,3 +8,9 @@ class FetchEvent extends HomeEvent {
 
   FetchEvent({required this.showingChartType});
 }
+
+class NavigateEvent extends HomeEvent {
+  final String menuType;
+
+  NavigateEvent({required this.menuType});
+}

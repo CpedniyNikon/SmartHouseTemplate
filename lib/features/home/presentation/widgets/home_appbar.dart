@@ -4,14 +4,12 @@ import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_event.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
-  final bool automaticallyImplyLeading;
-
-  const HomeAppbar({super.key, required this.automaticallyImplyLeading});
+  const HomeAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: automaticallyImplyLeading,
+      iconTheme: const IconThemeData(color: Colors.white),
       backgroundColor: Colors.black,
       title: const Text(
         'Всероссийский инженерный конкурс: Умный дом.',

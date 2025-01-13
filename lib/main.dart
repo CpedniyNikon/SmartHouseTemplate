@@ -23,7 +23,7 @@ Future<void> main() async {
         ),
         BlocProvider(
           create: (BuildContext context) => HomeBloc(
-              GetIt.I<HomeRepository>()),
+              GetIt.I<HomeRepository>(), GetIt.I<INavigationService>()),
         ),
       ],
       child: const Application(),

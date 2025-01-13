@@ -10,18 +10,23 @@ import 'package:vikrf_thesis/features/home/presentation/widgets/home_appbar.dart
 import 'package:vikrf_thesis/features/home/presentation/widgets/menu.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({
-    super.key
-  });
+  final StatefulNavigationShell navigationShell;
+
+  const HomeScreen({super.key, required this.navigationShell});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration.zero, () {
+      _scaffoldKey.currentState!.openDrawer();
+    });
     _initMenuItems();
   }
 
@@ -47,49 +52,25 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, HomeState state) {
         if (state is HomeFetchedState) {
-          final selectedMenuIndex =
-          _menuItemsIndices[state.showingChartType]!;
+          final selectedMenuIndex = _menuItemsIndices[state.showingChartType]!;
           return LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-              final needsDrawer = constraints.maxWidth <=
-                  AppDimens.menuMaxNeededWidth + AppDimens.chartBoxMinWidth;
               final appMenuWidget = AppMenu(
                 menuItems: _menuItems,
                 currentSelectedIndex: selectedMenuIndex,
-                onItemSelected: (newIndex, chartMenuItem) {
-                  context.go('/${chartMenuItem.chartType.name}');
-                  context
-                      .read<HomeBloc>()
-                      .add(FetchEvent(showingChartType: chartMenuItem.chartType));
-                  if (needsDrawer) {
-                    Navigator.of(context).pop();
-                  }
+                onItemSelected: (newIndex, menuItem) {
+                  context.read<HomeBloc>().add(
+                      FetchEvent(showingChartType: menuItem.chartType));
                 },
               );
-              final body = needsDrawer
-                  ? const Body()
-                  : Row(
-                children: [
-                  SizedBox(
-                    width: AppDimens.menuMaxNeededWidth,
-                    child: appMenuWidget,
-                  ),
-                  const Expanded(
-                    child: Body(),
-                  )
-                ],
-              );
+              final body = widget.navigationShell;
               return Scaffold(
-                appBar: HomeAppbar(
-                  automaticallyImplyLeading: needsDrawer,
-                ),
-                body: body,
-                drawer: needsDrawer
-                    ? Drawer(
-                  child: appMenuWidget,
-                )
-                    : null,
-              );
+                  key: _scaffoldKey,
+                  appBar: const HomeAppbar(),
+                  body: body,
+                  drawer: Drawer(
+                    child: appMenuWidget,
+                  ));
             },
           );
         }

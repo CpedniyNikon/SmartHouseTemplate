@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:vikrf_thesis/core/utils/app_assets.dart';
 
 enum MenuList { overview, devices, analytics, rules, gallery, history, settings }
@@ -16,4 +17,6 @@ extension MenuListExtension on MenuList {
   };
 
   String get assetIcon => AppAssets.getChartIcon(this);
+
+  String get name => toString().split('.').last;
 }
