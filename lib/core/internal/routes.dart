@@ -3,12 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/analytics/presentation/analytics_screen.dart';
 import 'package:vikrf_thesis/features/auth/presentation/login_screen.dart';
+import 'package:vikrf_thesis/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:vikrf_thesis/features/devices/presentation/devices_screen.dart';
-import 'package:vikrf_thesis/features/gallery/presentation/gallery_screen.dart';
-import 'package:vikrf_thesis/features/history/presentation/history_screen.dart';
 import 'package:vikrf_thesis/features/home/presentation/home_screen.dart';
-import 'package:vikrf_thesis/features/overview/presentation/overview_screen.dart';
-import 'package:vikrf_thesis/features/rules/presentation/rules_screen.dart';
 import 'package:vikrf_thesis/features/settings/presentation/settings_screen.dart';
 
 final GoRouter router = GoRouter(
@@ -36,7 +33,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/overview',
-              builder: (context, state) => OverviewScreen(),
+              builder: (context, state) => DashboardScreen(),
             )
           ],
         ),
@@ -61,30 +58,6 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/settings',
               builder: (context, state) => SettingsScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/rules',
-              builder: (context, state) => RulesScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/gallery',
-              builder: (context, state) => GalleryScreen(),
-            ),
-          ],
-        ),
-        StatefulShellBranch(
-          routes: [
-            GoRoute(
-              path: '/history',
-              builder: (context, state) => HistoryScreen(),
             ),
           ],
         ),

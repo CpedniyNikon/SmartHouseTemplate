@@ -2,12 +2,10 @@ import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vikrf_thesis/core/utils/app_dimens.dart';
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
-import 'package:vikrf_thesis/features/home/presentation/bloc/bloc_bloc.dart';
-import 'package:vikrf_thesis/features/home/presentation/widgets/body.dart';
 import 'package:vikrf_thesis/features/home/presentation/widgets/home_appbar.dart';
-import 'package:vikrf_thesis/features/home/presentation/widgets/menu.dart';
+import 'package:vikrf_thesis/features/dashboard/presentation/widgets/menu.dart';
+import 'package:vikrf_thesis/features/home/presentation/bloc/bloc_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
@@ -59,18 +57,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 menuItems: _menuItems,
                 currentSelectedIndex: selectedMenuIndex,
                 onItemSelected: (newIndex, menuItem) {
-                  context.read<HomeBloc>().add(
-                      FetchEvent(showingChartType: menuItem.chartType));
+                  context
+                      .read<HomeBloc>()
+                      .add(FetchEvent(showingChartType: menuItem.chartType));
                 },
               );
               final body = widget.navigationShell;
               return Scaffold(
-                  key: _scaffoldKey,
-                  appBar: const HomeAppbar(),
-                  body: body,
-                  drawer: Drawer(
-                    child: appMenuWidget,
-                  ));
+                key: _scaffoldKey,
+                appBar: const HomeAppbar(),
+                body: body,
+                drawer: Drawer(
+                  child: appMenuWidget,
+                ),
+              );
             },
           );
         }

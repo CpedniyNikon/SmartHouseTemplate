@@ -2,19 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:vikrf_thesis/core/utils/app_assets.dart';
 import 'package:vikrf_thesis/core/utils/app_colors.dart';
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
-import 'package:vikrf_thesis/features/home/presentation/widgets/menu_row.dart';
+import 'package:vikrf_thesis/features/dashboard/presentation/widgets/menu_row.dart';
 
 class AppMenu extends StatefulWidget {
   final List<ChartMenuItem> menuItems;
   final int currentSelectedIndex;
   final Function(int, ChartMenuItem) onItemSelected;
 
-  const AppMenu({
-    super.key,
-    required this.menuItems,
-    required this.currentSelectedIndex,
-    required this.onItemSelected
-  });
+  const AppMenu(
+      {super.key,
+      required this.menuItems,
+      required this.currentSelectedIndex,
+      required this.onItemSelected});
 
   @override
   AppMenuState createState() => AppMenuState();
@@ -51,7 +50,6 @@ class AppMenuState extends State<AppMenu> {
     );
   }
 }
-
 
 class ChartMenuItem {
   final MenuList chartType;

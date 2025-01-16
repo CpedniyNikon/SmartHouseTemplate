@@ -15,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this._homeRepository, this._navigationService)
       : super(HomeInitialState()) {
     on<FetchEvent>(_onFetch);
-    add(FetchEvent(showingChartType: MenuList.overview));
+    add(FetchEvent(showingChartType: MenuList.dashboard));
   }
 
   void _onFetch(FetchEvent event, Emitter<HomeState> emit) {
