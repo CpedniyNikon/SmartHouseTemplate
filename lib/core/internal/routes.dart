@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/analytics/presentation/analytics_screen.dart';
 import 'package:vikrf_thesis/features/auth/presentation/login_screen.dart';
 import 'package:vikrf_thesis/features/dashboard/presentation/dashboard_screen.dart';

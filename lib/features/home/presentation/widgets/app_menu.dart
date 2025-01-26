@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:vikrf_thesis/core/utils/app_assets.dart';
 import 'package:vikrf_thesis/core/utils/app_colors.dart';
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
-import 'package:vikrf_thesis/features/dashboard/presentation/widgets/menu_row.dart';
+import 'package:vikrf_thesis/features/home/presentation/widgets/menu_row.dart';
+
+class ChartMenuItem {
+  final MenuList chartType;
+  final String text;
+  final String iconPath;
+
+  const ChartMenuItem(this.chartType, this.text, this.iconPath);
+}
 
 class AppMenu extends StatefulWidget {
   final List<ChartMenuItem> menuItems;
@@ -23,6 +31,7 @@ class AppMenuState extends State<AppMenu> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 400,
       color: AppColors.itemsBackground,
       child: Column(
         children: [
@@ -49,12 +58,4 @@ class AppMenuState extends State<AppMenu> {
       ),
     );
   }
-}
-
-class ChartMenuItem {
-  final MenuList chartType;
-  final String text;
-  final String iconPath;
-
-  const ChartMenuItem(this.chartType, this.text, this.iconPath);
 }

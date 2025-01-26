@@ -7,7 +7,7 @@ import 'package:vikrf_thesis/features/auth/domain/repository/auth_repository.dar
 import 'package:vikrf_thesis/core/utils/domain/repository/navigation_service.dart';
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:vikrf_thesis/features/home/domain/repository/home_repository.dart';
-import 'package:vikrf_thesis/features/home/presentation/bloc/bloc_bloc.dart';
+import 'package:vikrf_thesis/features/home/presentation/bloc/home_bloc.dart';
 
 import 'core/internal/application.dart';
 

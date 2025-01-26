@@ -4,9 +4,9 @@ import 'package:vikrf_thesis/core/utils/domain/repository/navigation_service.dar
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/home/domain/repository/home_repository.dart';
 
-part 'bloc_event.dart';
+part 'home_event.dart';
 
-part 'bloc_state.dart';
+part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final INavigationService _navigationService;

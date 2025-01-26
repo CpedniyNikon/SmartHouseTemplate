@@ -2,10 +2,11 @@ import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vikrf_thesis/core/utils/app_colors.dart';
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/home/presentation/widgets/home_appbar.dart';
-import 'package:vikrf_thesis/features/dashboard/presentation/widgets/menu.dart';
-import 'package:vikrf_thesis/features/home/presentation/bloc/bloc_bloc.dart';
+import 'package:vikrf_thesis/features/home/presentation/widgets/app_menu.dart';
+import 'package:vikrf_thesis/features/home/presentation/bloc/home_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
@@ -17,14 +18,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, () {
-      _scaffoldKey.currentState!.openDrawer();
-    });
     _initMenuItems();
   }
 
@@ -50,31 +46,41 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, HomeState state) {
         if (state is HomeFetchedState) {
-          final selectedMenuIndex = _menuItemsIndices[state.showingChartType]!;
           return LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-              final appMenuWidget = AppMenu(
-                menuItems: _menuItems,
-                currentSelectedIndex: selectedMenuIndex,
-                onItemSelected: (newIndex, menuItem) {
-                  context
-                      .read<HomeBloc>()
-                      .add(FetchEvent(showingChartType: menuItem.chartType));
-                },
-              );
-              final body = widget.navigationShell;
               return Scaffold(
-                key: _scaffoldKey,
                 appBar: const HomeAppbar(),
-                body: body,
-                drawer: Drawer(
-                  child: appMenuWidget,
+                body: Container(
+                  color: AppColors.menuBackground,
+                  child: Row(
+                    children: [
+                      AppMenu(
+                        menuItems: _menuItems,
+                        currentSelectedIndex:
+                            _menuItemsIndices[state.showingChartType]!,
+                        onItemSelected: (newIndex, menuItem) {
+                          context.read<HomeBloc>().add(
+                              FetchEvent(showingChartType: menuItem.chartType));
+                        },
+                      ),
+                      Expanded(child: widget.navigationShell),
+                    ],
+                  ),
                 ),
               );
             },
           );
         }
-        return Container();
+        return const Dialog(
+          backgroundColor: Colors.transparent,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircularProgressIndicator(),
+              Text("Loading"),
+            ],
+          ),
+        );
       },
     );
   }
