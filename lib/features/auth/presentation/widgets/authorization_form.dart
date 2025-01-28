@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vikrf_thesis/core/utils/menu_list.dart';
 
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:vikrf_thesis/features/auth/presentation/bloc/auth_event.dart';
-import 'package:vikrf_thesis/features/home/presentation/bloc/home_bloc.dart';
 
 class AuthorizationForm extends StatefulWidget {
   const AuthorizationForm({super.key});

@@ -3,10 +3,8 @@ part of 'home_bloc.dart';
 @immutable
 sealed class HomeState {}
 
-final class HomeInitialState extends HomeState {}
+final class HomeInitialState extends HomeState {
+  final PageList pageName;
 
-final class HomeFetchedState extends HomeState {
-  final MenuList showingChartType;
-
-  HomeFetchedState({required this.showingChartType});
+  HomeInitialState({required this.pageName});
 }

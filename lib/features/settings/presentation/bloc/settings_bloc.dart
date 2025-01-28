@@ -7,10 +7,10 @@ part 'settings_event.dart';
 
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc() : super(SettingsInitialState()) {
-    add(FetchEvent());
+    on<FetchEvent>(_onFetch);
   }
 
-  void _onFetch(FetchEvent event, Emitter<SettingsState> emit) {
+  Future<void> _onFetch(FetchEvent event, Emitter<SettingsState> emit) async {
     emit(SettingsFetchedState());
   }
 }

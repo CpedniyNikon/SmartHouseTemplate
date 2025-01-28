@@ -1,5 +1,5 @@
-import 'package:vikrf_thesis/features/home/data/api/model/api_metric.dart';
-import 'package:vikrf_thesis/features/home/data/api/service/service.dart';
+import 'package:vikrf_thesis/features/dashboard/data/api/model/api_metric.dart';
+import 'package:vikrf_thesis/features/dashboard/data/api/service/service.dart';
 
 class MockService implements Service {
   @override

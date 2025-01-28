@@ -3,8 +3,8 @@ part of 'home_bloc.dart';
 @immutable
 sealed class HomeEvent {}
 
-class FetchEvent extends HomeEvent {
-  final MenuList showingChartType;
+final class PageChangeEvent extends HomeEvent {
+  final PageList pageName;
 
-  FetchEvent({required this.showingChartType});
+  PageChangeEvent({required this.pageName});
 }

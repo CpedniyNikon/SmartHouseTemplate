@@ -5,7 +5,7 @@ import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/home/presentation/widgets/menu_row.dart';
 
 class ChartMenuItem {
-  final MenuList chartType;
+  final PageList chartType;
   final String text;
   final String iconPath;
 

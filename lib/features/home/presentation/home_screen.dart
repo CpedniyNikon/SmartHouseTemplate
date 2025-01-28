@@ -7,6 +7,7 @@ import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/home/presentation/widgets/home_appbar.dart';
 import 'package:vikrf_thesis/features/home/presentation/widgets/app_menu.dart';
 import 'package:vikrf_thesis/features/home/presentation/bloc/home_bloc.dart';
+import 'package:vikrf_thesis/features/settings/presentation/bloc/settings_bloc.dart' as settings;
 
 class HomeScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
@@ -26,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _initMenuItems() {
     _menuItemsIndices = {};
-    _menuItems = MenuList.values.mapIndexed(
-      (int index, MenuList type) {
+    _menuItems = PageList.values.mapIndexed(
+      (int index, PageList type) {
         _menuItemsIndices[type] = index;
         return ChartMenuItem(
           type,
@@ -38,14 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
     ).toList();
   }
 
-  late final Map<MenuList, int> _menuItemsIndices;
+  late final Map<PageList, int> _menuItemsIndices;
   late final List<ChartMenuItem> _menuItems;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, HomeState state) {
-        if (state is HomeFetchedState) {
+        if (state is HomeInitialState) {
           return LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return Scaffold(
@@ -57,10 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       AppMenu(
                         menuItems: _menuItems,
                         currentSelectedIndex:
-                            _menuItemsIndices[state.showingChartType]!,
+                            _menuItemsIndices[state.pageName]!,
                         onItemSelected: (newIndex, menuItem) {
                           context.read<HomeBloc>().add(
-                              FetchEvent(showingChartType: menuItem.chartType));
+                              PageChangeEvent(pageName: menuItem.chartType));
+                          if(newIndex == 3) {
+                            context.read<settings.SettingsBloc>().add(
+                                settings.FetchEvent());
+                          }
                         },
                       ),
                       Expanded(child: widget.navigationShell),
@@ -71,16 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           );
         }
-        return const Dialog(
-          backgroundColor: Colors.transparent,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircularProgressIndicator(),
-              Text("Loading"),
-            ],
-          ),
-        );
+        return Container();
       },
     );
   }
