@@ -9,15 +9,8 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: const IconThemeData(color: Colors.white),
-      backgroundColor: Colors.black,
       title: const Text(
-        'Всероссийский инженерный конкурс: Умный дом.',
-        style: TextStyle(
-          fontFamily: 'Inter',
-          fontSize: 20,
-          color: Colors.white,
-        ),
+        'Умный дом.',
       ),
       actions: [
         Align(
@@ -28,12 +21,12 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.account_box,
-                    color: Colors.white,
+                    color: Theme.of(context).textTheme.headlineLarge!.color!,
                   ),
                   onPressed: () {
-                    context.read<AuthBloc>().add(const LogOutEvent());
+                    context.read<AuthBloc>().add(AuthBlocEventLogOut());
                   },
                 ),
               ),

@@ -10,10 +10,8 @@ class AnalyticsScreen extends StatefulWidget {
 class _AnalyticsScreenState extends State<AnalyticsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return const Center(
         child: Text('analytics'),
-      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:vikrf_thesis/core/utils/app_colors.dart';
 
 class _LineChart extends StatelessWidget {
   const _LineChart({required this.isShowingMainData});
@@ -168,18 +167,19 @@ class _LineChart extends StatelessWidget {
 
   FlBorderData get borderData => FlBorderData(
     show: true,
-    border: Border(
+    border: const Border(
       bottom: BorderSide(
-          color: AppColors.primary.withValues(alpha: 0.2), width: 4),
-      left: const BorderSide(color: Colors.transparent),
-      right: const BorderSide(color: Colors.transparent),
-      top: const BorderSide(color: Colors.transparent),
+          color: Colors.black,
+      ),
+      left: BorderSide(color: Colors.transparent),
+      right: BorderSide(color: Colors.transparent),
+      top: BorderSide(color: Colors.transparent),
     ),
   );
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
     isCurved: true,
-    color: AppColors.contentColorGreen,
+    // color: AppColors.contentColorGreen,
     barWidth: 8,
     isStrokeCapRound: true,
     dotData: const FlDotData(show: false),
@@ -197,13 +197,13 @@ class _LineChart extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
     isCurved: true,
-    color: AppColors.contentColorPink,
+    // color: AppColors.contentColorPink,
     barWidth: 8,
     isStrokeCapRound: true,
     dotData: const FlDotData(show: false),
     belowBarData: BarAreaData(
       show: false,
-      color: AppColors.contentColorPink.withValues(alpha: 0),
+      // color: AppColors.contentColorPink.withValues(alpha: 0),
     ),
     spots: const [
       FlSpot(1, 1),
@@ -217,7 +217,7 @@ class _LineChart extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_3 => LineChartBarData(
     isCurved: true,
-    color: AppColors.contentColorCyan,
+    // color: AppColors.contentColorCyan,
     barWidth: 8,
     isStrokeCapRound: true,
     dotData: const FlDotData(show: false),
@@ -234,7 +234,7 @@ class _LineChart extends StatelessWidget {
   LineChartBarData get lineChartBarData2_1 => LineChartBarData(
     isCurved: true,
     curveSmoothness: 0,
-    color: AppColors.contentColorGreen.withValues(alpha: 0.5),
+    // color: AppColors.contentColorGreen.withValues(alpha: 0.5),
     barWidth: 4,
     isStrokeCapRound: true,
     dotData: const FlDotData(show: false),
@@ -252,13 +252,13 @@ class _LineChart extends StatelessWidget {
 
   LineChartBarData get lineChartBarData2_2 => LineChartBarData(
     isCurved: true,
-    color: AppColors.contentColorPink.withValues(alpha: 0.5),
+    // color: AppColors.contentColorPink.withValues(alpha: 0.5),
     barWidth: 4,
     isStrokeCapRound: true,
     dotData: const FlDotData(show: false),
     belowBarData: BarAreaData(
       show: true,
-      color: AppColors.contentColorPink.withValues(alpha: 0.2),
+      // color: AppColors.contentColorPink.withValues(alpha: 0.2),
     ),
     spots: const [
       FlSpot(1, 1),
@@ -273,7 +273,7 @@ class _LineChart extends StatelessWidget {
   LineChartBarData get lineChartBarData2_3 => LineChartBarData(
     isCurved: true,
     curveSmoothness: 0,
-    color: AppColors.contentColorCyan.withValues(alpha: 0.5),
+    // color: AppColors.contentColorCyan.withValues(alpha: 0.5),
     barWidth: 2,
     isStrokeCapRound: true,
     dotData: const FlDotData(show: true),
@@ -319,7 +319,7 @@ class LineChartSample1State extends State<LineChartSample1> {
               const Text(
                 'Температура',
                 style: TextStyle(
-                  color: AppColors.primary,
+                  // color: AppColors.primary,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,

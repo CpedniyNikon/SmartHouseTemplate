@@ -13,6 +13,5 @@ class AppAssets {
         return 'assets/icons/ic_radar_chart.svg';
     }
   }
-
-  static const vikLogoText = 'assets/icons/vik_logo.png';
+  static const vikLogoText = 'assets/icons/smart_house_logo.svg';
 }

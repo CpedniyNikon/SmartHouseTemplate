@@ -1,5 +1,8 @@
 part of 'settings_bloc.dart';
-@immutable
-sealed class SettingsEvent {}
 
-class FetchEvent extends SettingsEvent {}
+@immutable
+sealed class SettingsBlocEvent {}
+
+class SettingsBlocEventSetInitialTheme extends SettingsBlocEvent {}
+
+class SettingsBlocEventChangeTheme extends SettingsBlocEvent {}

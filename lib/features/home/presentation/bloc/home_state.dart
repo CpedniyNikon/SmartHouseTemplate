@@ -1,10 +1,10 @@
 part of 'home_bloc.dart';
 
 @immutable
-sealed class HomeState {}
+sealed class HomeBlocState {}
 
-final class HomeInitialState extends HomeState {
+final class HomeBlocStateInitial extends HomeBlocState {
   final PageList pageName;
 
-  HomeInitialState({required this.pageName});
+  HomeBlocStateInitial({required this.pageName});
 }

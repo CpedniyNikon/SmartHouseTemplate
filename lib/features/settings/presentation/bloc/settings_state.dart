@@ -1,8 +1,8 @@
 part of 'settings_bloc.dart';
 
 @immutable
-sealed class SettingsState {}
+class SettingsBlocState {
+  final bool isDark;
 
-final class SettingsInitialState extends SettingsState {}
-
-final class SettingsFetchedState extends SettingsState {}
+  const SettingsBlocState({required this.isDark});
+}

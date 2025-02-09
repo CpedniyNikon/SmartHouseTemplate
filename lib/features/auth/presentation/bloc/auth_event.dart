@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
 @immutable
-sealed class AuthEvent {
-  const AuthEvent();
+sealed class AuthBlocEvent {
+  const AuthBlocEvent();
 }
 
-class SignInEvent extends AuthEvent {
+class AuthBlocEventSignIn extends AuthBlocEvent {
   final String email;
   final String password;
 
-  const SignInEvent(this.email, this.password);
+  const AuthBlocEventSignIn(this.email, this.password);
 }
 
-class SignUpEvent extends AuthEvent {
+class AuthBlocEventSignUp extends AuthBlocEvent {
   final String email;
   final String password;
 
-  const SignUpEvent(this.email, this.password);
+  const AuthBlocEventSignUp(this.email, this.password);
 }
 
-class LogOutEvent extends AuthEvent {
-  const LogOutEvent();
-}
+class AuthBlocEventLogOut extends AuthBlocEvent {}

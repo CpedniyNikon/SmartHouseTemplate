@@ -1,10 +1,12 @@
 part of 'home_bloc.dart';
 
 @immutable
-sealed class HomeEvent {}
+sealed class HomeBlocEvent {
+  const HomeBlocEvent();
+}
 
-final class PageChangeEvent extends HomeEvent {
+final class HomeBlocEventPageChange extends HomeBlocEvent {
   final PageList pageName;
 
-  PageChangeEvent({required this.pageName});
+  const HomeBlocEventPageChange({required this.pageName});
 }

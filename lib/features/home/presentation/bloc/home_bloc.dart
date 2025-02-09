@@ -7,17 +7,17 @@ part 'home_event.dart';
 
 part 'home_state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
   final INavigationService _navigationService;
 
   HomeBloc(this._navigationService)
-      : super(HomeInitialState(pageName: PageList.dashboard)) {
-    on<PageChangeEvent>(_onPageChange);
+      : super(HomeBlocStateInitial(pageName: PageList.dashboard)) {
+    on<HomeBlocEventPageChange>(_onPageChange);
   }
 
-  void _onPageChange(PageChangeEvent event, Emitter<HomeState> emit) {
+  void _onPageChange(HomeBlocEventPageChange event, Emitter<HomeBlocState> emit) {
     _navigationService.navigateTo(event.pageName.name);
-    emit(HomeInitialState(pageName: event.pageName));
+    emit(HomeBlocStateInitial(pageName: event.pageName));
   }
 
 }

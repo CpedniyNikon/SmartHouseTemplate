@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vikrf_thesis/core/utils/app_colors.dart';
-import 'package:vikrf_thesis/core/utils/app_dimens.dart';
 
 class ChartHolder extends StatelessWidget {
   final String chartName;
@@ -8,7 +6,8 @@ class ChartHolder extends StatelessWidget {
 
   const ChartHolder({
     super.key,
-    required this.chartName, required this.widget,
+    required this.chartName,
+    required this.widget,
   });
 
   @override
@@ -22,18 +21,12 @@ class ChartHolder extends StatelessWidget {
             const SizedBox(width: 6),
             Text(
               chartName,
-              style: const TextStyle(
-                color: AppColors.primary,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
             ),
             Expanded(child: Container()),
             IconButton(
               onPressed: () => {},
               icon: const Icon(
                 Icons.code,
-                color: AppColors.primary,
               ),
               tooltip: 'Source code',
             ),
@@ -41,10 +34,11 @@ class ChartHolder extends StatelessWidget {
         ),
         const SizedBox(height: 2),
         Container(
-          decoration: const BoxDecoration(
-            color: AppColors.itemsBackground,
-            borderRadius:
-            BorderRadius.all(Radius.circular(AppDimens.defaultRadius)),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            border: Border.all(
+              width: 4
+            )
           ),
           child: widget,
         ),

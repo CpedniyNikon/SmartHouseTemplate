@@ -1,4 +1,4 @@
-import 'package:vikrf_thesis/core/utils/app_assets.dart';
+import 'package:vikrf_thesis/core/constants/app_assets.dart';
 
 enum PageList { dashboard, devices, analytics, settings }
 

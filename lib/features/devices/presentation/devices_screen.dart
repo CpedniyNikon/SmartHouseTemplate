@@ -10,11 +10,9 @@ class DevicesScreen extends StatefulWidget {
 class _DevicesScreenState extends State<DevicesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          ('devices'),
-        ),
+    return const Center(
+      child: Text(
+        ('devices'),
       ),
     );
   }

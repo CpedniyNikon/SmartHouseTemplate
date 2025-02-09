@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vikrf_thesis/core/utils/app_assets.dart';
-import 'package:vikrf_thesis/core/utils/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:vikrf_thesis/core/constants/app_assets.dart';
 import 'package:vikrf_thesis/core/utils/menu_list.dart';
 import 'package:vikrf_thesis/features/home/presentation/widgets/menu_row.dart';
 
@@ -30,13 +30,28 @@ class AppMenu extends StatefulWidget {
 class AppMenuState extends State<AppMenu> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 400,
-      color: AppColors.itemsBackground,
+    return SizedBox(
+      width: 300,
       child: Column(
         children: [
-          Image.asset(
-            AppAssets.vikLogoText,
+          Row(
+            children: [
+              SizedBox(
+                width: 160,
+                height: 160,
+                child: SvgPicture.asset(
+                  AppAssets.vikLogoText,
+                  colorFilter: ColorFilter.mode(
+                      Theme.of(context).textTheme.headlineLarge!.color!,
+                      BlendMode.srcIn),
+                ),
+              ),
+              const Expanded(
+                child: Text(
+                  'Умный дом',
+                ),
+              )
+            ],
           ),
           Expanded(
             child: ListView.builder(

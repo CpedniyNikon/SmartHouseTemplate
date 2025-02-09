@@ -17,14 +17,15 @@ class _LoginLayoutState extends State<LoginLayout> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        BlocBuilder<AuthBloc, AuthState>(
-          builder: (BuildContext context, AuthState state) {
+        BlocBuilder<AuthBloc, AuthBlocState>(
+          builder: (BuildContext context, AuthBlocState state) {
             return switch (state) {
-              AuthInitialState _ => const Text('Войдите в учетную запись'),
-              AuthSuccessState _ => const Text('you successfully logged in'),
-              AuthErrorState _ =>
+              AuthBlocStateInitial _ => const Text('Войдите в учетную запись'),
+              AuthBlocStateSuccess _ =>
+                const Text('you successfully logged in'),
+              AuthBlocStateError _ =>
                 Text('ошибка при авторизации ${state.errorToShow}'),
-              AuthState _ => throw const Placeholder(),
+              AuthBlocState _ => const CircularProgressIndicator(),
             };
           },
         ),

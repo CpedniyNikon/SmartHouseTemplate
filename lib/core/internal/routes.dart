@@ -32,7 +32,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/overview',
-              builder: (context, state) => DashboardScreen(),
+              builder: (context, state) => const DashboardScreen(),
             )
           ],
         ),
@@ -40,7 +40,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/devices',
-              builder: (context, state) => DevicesScreen(),
+              builder: (context, state) => const DevicesScreen(),
             )
           ],
         ),
@@ -48,7 +48,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/analytics',
-              builder: (context, state) => AnalyticsScreen(),
+              builder: (context, state) => const AnalyticsScreen(),
             )
           ],
         ),
@@ -56,7 +56,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/settings',
-              builder: (context, state) => SettingsScreen(),
+              builder: (context, state) => const SettingsScreen(),
             ),
           ],
         ),
@@ -64,7 +64,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/settings',
-              builder: (context, state) => SettingsScreen(),
+              builder: (context, state) => const SettingsScreen(),
             )
           ],
         ),

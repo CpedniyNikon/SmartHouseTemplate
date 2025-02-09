@@ -172,7 +172,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                 onTap: () {
                   context
                       .read<AuthBloc>()
-                      .add(const SignInEvent('email', 'password'));
+                      .add(const AuthBlocEventSignIn('email', 'password'));
                 },
                 child: Container(
                     width: 750,
