@@ -48,7 +48,7 @@ class AppMenuState extends State<AppMenu> {
               ),
               const Expanded(
                 child: Text(
-                  'Умный дом',
+                  'Istok-Smart',
                 ),
               )
             ],

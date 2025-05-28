@@ -7,6 +7,7 @@ import 'package:vikrf_thesis/features/home/presentation/widgets/home_appbar.dart
 import 'package:vikrf_thesis/features/home/presentation/widgets/app_menu.dart';
 import 'package:vikrf_thesis/features/home/presentation/bloc/home_bloc.dart';
 import 'package:vikrf_thesis/features/settings/presentation/bloc/settings_bloc.dart';
+import 'package:vikrf_thesis/features/settings/presentation/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
@@ -44,27 +45,29 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeBlocState>(
-      builder: (context, HomeBlocState state) => Scaffold(
-        appBar: const HomeAppbar(),
-        body: Row(
-          children: [
-            AppMenu(
-              menuItems: _menuItems,
-              currentSelectedIndex:
-                  _menuItemsIndices[(state as HomeBlocStateInitial).pageName]!,
-              onItemSelected: (newIndex, menuItem) {
-                context
-                    .read<HomeBloc>()
-                    .add(HomeBlocEventPageChange(pageName: menuItem.chartType));
-              },
-            ),
-            const VerticalDivider(),
-            Expanded(
-                child: BlocBuilder<SettingsBloc, SettingsBlocState>(
-              builder: (BuildContext context, SettingsBlocState state) =>
-                  Container(child: widget.navigationShell),
-            )),
-          ],
+      builder: (context, HomeBlocState state) => PopScope(
+        child: Scaffold(
+          appBar: const HomeAppbar(),
+          body: Row(
+            children: [
+              AppMenu(
+                menuItems: _menuItems,
+                currentSelectedIndex:
+                    _menuItemsIndices[(state as HomeBlocStateInitial).pageName]!,
+                onItemSelected: (newIndex, menuItem) {
+                  context
+                      .read<HomeBloc>()
+                      .add(HomeBlocEventPageChange(pageName: menuItem.chartType));
+                },
+              ),
+              const VerticalDivider(),
+              Expanded(
+                  child: BlocBuilder<SettingsBloc, SettingsBlocState>(
+                builder: (BuildContext context, SettingsBlocState state) =>
+                    Container(child: widget.navigationShell),
+              )),
+            ],
+          ),
         ),
       ),
     );

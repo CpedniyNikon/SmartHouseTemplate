@@ -8,7 +8,7 @@ class LoginAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.black,
       title: const Text(
-        'Умный дом.',
+        'Istok-Smart',
         style: TextStyle(
           fontFamily: 'Inter',
           fontSize: 20,

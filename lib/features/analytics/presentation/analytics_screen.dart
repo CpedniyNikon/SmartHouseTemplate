@@ -11,7 +11,7 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-        child: Text('analytics'),
+        // child: Text('analytics'),
     );
   }
 }

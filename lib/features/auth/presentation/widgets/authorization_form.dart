@@ -37,7 +37,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                 height: 29,
                 child: Text(
                   textAlign: TextAlign.start,
-                  'Please fill in your unique admin login details below',
+                  'Пожалуйста, заполните ниже ваши уникальные данные для входа в систему',
                   style: TextStyle(
                     fontFamily: 'Inter',
                     height: 1,
@@ -60,7 +60,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                     width: 184,
                     height: 32,
                     child: Text(
-                      'Email address',
+                      'Email',
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 24,
@@ -106,7 +106,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                     width: 184,
                     height: 32,
                     child: Text(
-                      'Password',
+                      'Пароль',
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 24,
@@ -123,6 +123,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                         SizedBox(
                           height: 58,
                           child: TextField(
+                            obscureText: true,
                             cursorColor: Colors.black,
                             style: const TextStyle(
                               decorationThickness: 0,
@@ -153,7 +154,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                             height: 32,
                             child: Text(
                               textAlign: TextAlign.end,
-                              'forgot password?',
+                              'Забыли пароль?',
                               style: TextStyle(
                                 fontFamily: 'Inter',
                                 fontSize: 24,
@@ -183,7 +184,7 @@ class _AuthorizationFormState extends State<AuthorizationForm> {
                     ),
                     child: const Center(
                         child: Text(
-                      'Sign In',
+                      'Войти',
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 24,

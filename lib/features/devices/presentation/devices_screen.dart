@@ -11,9 +11,9 @@ class _DevicesScreenState extends State<DevicesScreen> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text(
-        ('devices'),
-      ),
+      // child: Text(
+      //   ('devices'),
+      // ),
     );
   }
 }

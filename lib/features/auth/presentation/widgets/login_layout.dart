@@ -20,7 +20,7 @@ class _LoginLayoutState extends State<LoginLayout> {
         BlocBuilder<AuthBloc, AuthBlocState>(
           builder: (BuildContext context, AuthBlocState state) {
             return switch (state) {
-              AuthBlocStateInitial _ => const Text('Войдите в учетную запись'),
+              AuthBlocStateInitial _ => const Text(''),
               AuthBlocStateSuccess _ =>
                 const Text('you successfully logged in'),
               AuthBlocStateError _ =>
