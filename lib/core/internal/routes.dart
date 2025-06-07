@@ -7,11 +7,22 @@ import 'package:vikrf_thesis/features/devices/presentation/devices_screen.dart';
 import 'package:vikrf_thesis/features/home/presentation/home_screen.dart';
 import 'package:vikrf_thesis/features/settings/presentation/settings_screen.dart';
 
+import 'dependencies/api_module.dart';
+
 final GoRouter router = GoRouter(
   initialLocation: '/login',
   routes: [
     GoRoute(
       path: '/login',
+      redirect: (_, __) async {
+        debugPrint("redirect ${DateTime.now()}");
+        final authAppUtil = ApiModule.authApiUtil();
+        final hasToken = await authAppUtil.hasToken();
+        if (hasToken.isNotEmpty) {
+          return '/overview';
+        }
+        return null;
+      },
       pageBuilder: (BuildContext context, GoRouterState state) {
         return CustomTransitionPage(
           child: const LoginScreen(),

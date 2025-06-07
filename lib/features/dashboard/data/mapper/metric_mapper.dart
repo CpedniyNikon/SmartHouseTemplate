@@ -3,6 +3,6 @@ import 'package:vikrf_thesis/features/dashboard/domain/entity/metric_entity.dart
 
 class MetricMapper {
   static MetricEntity fromApi(ApiMetric metric) {
-    return MetricEntity();
+    return MetricEntity(data: metric.data);
   }
 }

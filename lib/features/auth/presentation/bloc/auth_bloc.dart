@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vikrf_thesis/features/auth/domain/repository/auth_repository.dart';
 import 'package:vikrf_thesis/core/utils/domain/repository/navigation_service.dart';
@@ -14,14 +15,17 @@ class AuthBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
     on<AuthBlocEventLogOut>(_onLogout);
   }
 
-  void _onSignIn(AuthBlocEventSignIn event, Emitter<AuthBlocState> emit) {
-    _authRepository.login(email: event.email, password: event.password);
+  Future<void> _onSignIn(
+      AuthBlocEventSignIn event, Emitter<AuthBlocState> emit) async {
+    await _authRepository.login(email: event.email, password: event.password);
     emit(AuthBlocStateSuccess());
     _navigationService.navigateToHome();
   }
 
-  void _onLogout(AuthBlocEventLogOut event, Emitter<AuthBlocState> emit) {
-    _authRepository.logout(uuid: 'uuid');
+  Future<void> _onLogout(
+      AuthBlocEventLogOut event, Emitter<AuthBlocState> emit) async {
+    await _authRepository.logout(uuid: 'uuid');
+    debugPrint("AuthBlocEventLogOut invoked ${DateTime.now()}");
     emit(AuthBlocStateInitial());
     _navigationService.navigateToLogin();
   }

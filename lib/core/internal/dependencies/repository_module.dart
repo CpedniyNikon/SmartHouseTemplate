@@ -8,7 +8,7 @@ class RepositoryModule {
   static final AuthRepository _authRepository =
       AuthDataRepository(ApiModule.authApiUtil());
   static final DashboardRepository _dashboardRepository =
-      HomeDataRepository(ApiModule.dashboardApiUtil());
+  DashboardDataRepository(ApiModule.dashboardApiUtil());
 
   static AuthRepository authRepository() {
     return _authRepository;

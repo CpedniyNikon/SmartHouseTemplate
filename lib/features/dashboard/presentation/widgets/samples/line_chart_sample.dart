@@ -2,7 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class _LineChart extends StatelessWidget {
-  const _LineChart();
+  final List<int> data;
+  const _LineChart(this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -78,19 +79,19 @@ class _LineChart extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 1:
-        text = '10';
+        text = '1';
         break;
       case 2:
-        text = '15';
+        text = '2';
         break;
       case 3:
-        text = '20';
+        text = '3';
         break;
       case 4:
-        text = '25';
+        text = '4';
         break;
       case 5:
-        text = '30';
+        text = '5';
         break;
       default:
         return Container();
@@ -174,20 +175,17 @@ class _LineChart extends StatelessWidget {
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 3),
-          FlSpot(2, 3),
-          FlSpot(3, 2.5),
-          FlSpot(4, 3),
-          FlSpot(5, 3),
-          FlSpot(6, 3.5),
-          FlSpot(7, 3),
-        ],
+        spots: List.generate(7, (index) {
+          final x = index + 1;
+          final y = index < data.length ? data[index].toDouble() : 0.0;
+          return FlSpot(x.toDouble(), y);
+        }),
       );
 }
 
 class LineChartSample1 extends StatefulWidget {
-  const LineChartSample1({super.key});
+  final List<int> data;
+  const LineChartSample1({super.key, required this.data});
 
   @override
   State<StatefulWidget> createState() => LineChartSample1State();
@@ -208,13 +206,13 @@ class LineChartSample1State extends State<LineChartSample1> {
       aspectRatio: 1.23,
       child: Stack(
         children: <Widget>[
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              SizedBox(
+              const SizedBox(
                 height: 37,
               ),
-              Text(
+              const Text(
                 'Температура',
                 style: TextStyle(
                   // color: AppColors.primary,
@@ -224,16 +222,16 @@ class LineChartSample1State extends State<LineChartSample1> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 37,
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.only(right: 16, left: 6),
-                  child: _LineChart(),
+                  padding: const EdgeInsets.only(right: 16, left: 6),
+                  child: _LineChart(widget.data),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ],

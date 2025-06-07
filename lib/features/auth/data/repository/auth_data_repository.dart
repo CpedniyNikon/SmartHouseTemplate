@@ -17,4 +17,9 @@ class AuthDataRepository extends AuthRepository {
   Future<void> logout({required String uuid}) {
     return _apiUtil.logout(uuid: uuid);
   }
+
+  @override
+  Future<String> getToken() async {
+    return _apiUtil.hasToken();
+  }
 }

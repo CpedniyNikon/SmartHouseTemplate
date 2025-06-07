@@ -9,4 +9,6 @@ abstract class AuthRepository {
   Future<void> logout({
     required String uuid,
   });
+
+  Future<String> getToken();
 }

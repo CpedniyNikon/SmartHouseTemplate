@@ -6,7 +6,7 @@ class MockService implements Service {
   @override
   Future<ApiUser> login(GetUserBody body) async {
     await Future.delayed(const Duration(seconds: 1));
-    final response = {'email': 'test.email', 'password': 'test.password'};
+    final response = {'email': 'test.email', 'password': 'test.password', 'token': 'token'};
     return ApiUser.fromApi(response);
   }
 
