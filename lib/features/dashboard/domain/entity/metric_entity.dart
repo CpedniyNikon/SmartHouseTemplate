@@ -1,5 +1,5 @@
 class MetricEntity {
-  final List<int> data;
+  final List<Map<String,List<int>>> data;
 
   MetricEntity({required this.data});
 }

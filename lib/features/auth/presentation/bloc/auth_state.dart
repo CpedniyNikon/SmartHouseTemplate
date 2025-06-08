@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 
 @immutable
-abstract class AuthBlocState {
+sealed class AuthBlocState {
   const AuthBlocState();
 }
 
 class AuthBlocStateInitial extends AuthBlocState {}
 
 class AuthBlocStateLoading extends AuthBlocState {
-  final String email;
-  final String password;
-
-  const AuthBlocStateLoading(this.email, this.password);
+  const AuthBlocStateLoading();
 }
 
-class AuthBlocStateSuccess extends AuthBlocState {}
+class AuthBlocStateSuccess extends AuthBlocState {
+}
 
 class AuthBlocStateError extends AuthBlocState {
-  final String email;
-  final String password;
-  final String errorToShow;
+  final String error;
 
-  const AuthBlocStateError(this.email, this.password, this.errorToShow);
+  const AuthBlocStateError(this.error);
 }

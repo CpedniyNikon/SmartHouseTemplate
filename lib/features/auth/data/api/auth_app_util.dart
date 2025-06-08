@@ -17,7 +17,7 @@ class AuthAppUtil {
     final body =
     GetUserBody(email: email, password: password);
     final result = await _service.login(body);
-    _prefs.setString('auth_token', result.token);
+    await _prefs.setString('auth_token', result.token);
 
     return UserMapper.fromApi(result);
   }

@@ -15,18 +15,27 @@ class AuthBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
     on<AuthBlocEventLogOut>(_onLogout);
   }
 
-  Future<void> _onSignIn(
-      AuthBlocEventSignIn event, Emitter<AuthBlocState> emit) async {
-    await _authRepository.login(email: event.email, password: event.password);
-    emit(AuthBlocStateSuccess());
-    _navigationService.navigateToHome();
+  Future<void> _onSignIn(AuthBlocEventSignIn event, Emitter<AuthBlocState> emit) async {
+    if(state is AuthBlocStateLoading) return;
+    try {
+      emit(const AuthBlocStateLoading());
+      await _authRepository.login(email: event.email, password: event.password);
+      emit(AuthBlocStateSuccess());
+      _navigationService.navigateToHome();
+    } catch (e) {
+      emit(AuthBlocStateError(e.toString()));
+    }
   }
 
-  Future<void> _onLogout(
-      AuthBlocEventLogOut event, Emitter<AuthBlocState> emit) async {
-    await _authRepository.logout(uuid: 'uuid');
-    debugPrint("AuthBlocEventLogOut invoked ${DateTime.now()}");
-    emit(AuthBlocStateInitial());
-    _navigationService.navigateToLogin();
+  Future<void> _onLogout(AuthBlocEventLogOut event, Emitter<AuthBlocState> emit) async {
+    if(state is AuthBlocStateLoading) return;
+    try {
+      emit(const AuthBlocStateLoading());
+      await _authRepository.logout(uuid: 'uuid');
+      emit(AuthBlocStateInitial());
+      _navigationService.navigateToLogin();
+    } catch (e) {
+      emit(AuthBlocStateError(e.toString()));
+    }
   }
 }

@@ -6,7 +6,7 @@ sealed class DashboardBlocState {}
 final class DashboardBlocStateInitial extends DashboardBlocState {}
 
 final class DashboardBlocStateFetched extends DashboardBlocState {
-  final List<int> data;
+  final List<Map<String, List<int>>> data;
 
   DashboardBlocStateFetched(this.data);
 }

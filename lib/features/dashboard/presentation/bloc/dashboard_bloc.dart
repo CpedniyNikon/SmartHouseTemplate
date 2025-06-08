@@ -19,7 +19,6 @@ class DashboardBloc extends Bloc<DashboardBlocEvent, DashboardBlocState> {
 
   Future<void> _onFetch(
       DashboardBlocEventFetch event, Emitter<DashboardBlocState> emit) async {
-    debugPrint("_onFetch");
     final token = await _authRepository.getToken();
     MetricEntity data = await _dashboardRepository.fetch(uuid: token);
     emit(DashboardBlocStateFetched(data.data));

@@ -15,22 +15,30 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  Timer? timer;
+
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 1), (_) {
+    timer = Timer.periodic(const Duration(seconds: 1), (_) {
       context.read<DashboardBloc>().add(DashboardBlocEventFetch());
     });
-    debugPrint("DashboardScreen");
+  }
+
+  @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: BlocBuilder<DashboardBloc, DashboardBlocState>(builder: (context, state) {
+      child: BlocBuilder<DashboardBloc, DashboardBlocState>(
+          builder: (context, state) {
         if (state is DashboardBlocStateFetched) {
           return MasonryGridView.builder(
-            itemCount: 1,
+            itemCount: state.data.length,
             shrinkWrap: true,
             padding: const EdgeInsets.only(
                 // left: AppDimens.chartSamplesSpace,
@@ -42,10 +50,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             // mainAxisSpacing: AppDimens.chartSamplesSpace,
             itemBuilder: (BuildContext context, int index) {
               return ChartHolder(
-                chartName: 'Спальня',
-                widget: LineChartSample1(
-                  data: state.data
-                ),
+                chartName: state.data[index].keys.first,
+                widget: LineChartSample1(data: state.data[index].values.first),
               );
             },
             gridDelegate: const SliverSimpleGridDelegateWithMaxCrossAxisExtent(
