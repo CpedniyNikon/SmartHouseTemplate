@@ -10,7 +10,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: const Text(
-        'Istok-Smart',
+        'Smart-House',
       ),
       actions: [
         Align(

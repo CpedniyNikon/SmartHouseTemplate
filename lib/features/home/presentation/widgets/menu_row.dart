@@ -20,7 +20,6 @@ class MenuRow extends StatefulWidget {
 }
 
 class _MenuRowState extends State<MenuRow> {
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -35,6 +34,10 @@ class _MenuRowState extends State<MenuRow> {
               ),
               SvgPicture.asset(
                 widget.svgPath,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).textTheme.headlineLarge!.color!,
+                  BlendMode.srcIn,
+                ),
               ),
               const SizedBox(
                 width: 18,
@@ -43,9 +46,6 @@ class _MenuRowState extends State<MenuRow> {
                 widget.text,
               ),
               Expanded(child: Container()),
-              const SizedBox(
-                width: 18,
-              ),
             ],
           ),
         ),

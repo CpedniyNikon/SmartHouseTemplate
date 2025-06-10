@@ -28,23 +28,6 @@ class Body extends StatelessWidget {
                     'assets/bgs/bg.png',
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.account_box,
-                        color:
-                            Theme.of(context).textTheme.headlineLarge!.color!,
-                      ),
-                      onPressed: () {
-                        context.read<AuthBloc>().add(
-                            const AuthBlocEventSignIn('email', 'password'));
-                      },
-                    ),
-                  ),
-                ),
                 const Center(
                   child: LoginLayout(),
                 ),

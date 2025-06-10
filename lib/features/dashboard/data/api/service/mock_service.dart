@@ -16,11 +16,10 @@ class MockService implements Service {
       'Коридор',
     ];
 
-
     final response = {
-      'data': [
-        {roomList[Random().nextInt(roomList.length)]: List.generate(7, (_) => Random().nextInt(6))}
-      ]
+      'data': roomList
+          .map((room) => {room: List.generate(7, (_) => Random().nextInt(6))})
+          .toList()
     };
     return ApiMetric.fromApi(response);
   }
