@@ -8,24 +8,24 @@ class _LineChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      sampleData1,
+      sampleData,
       duration: const Duration(milliseconds: 250),
     );
   }
 
-  LineChartData get sampleData1 => LineChartData(
-        lineTouchData: lineTouchData1,
+  LineChartData get sampleData => LineChartData(
+        lineTouchData: lineTouchData,
         gridData: gridData,
-        titlesData: titlesData1,
+        titlesData: titlesData,
         borderData: borderData,
-        lineBarsData: lineBarsData1,
+        lineBarsData: lineBarsData,
         minX: 1,
         maxX: 7,
         maxY: 5,
         minY: 0,
       );
 
-  LineTouchData get lineTouchData1 => LineTouchData(
+  LineTouchData get lineTouchData => LineTouchData(
         handleBuiltInTouches: true,
         touchTooltipData: LineTouchTooltipData(
           getTooltipColor: (touchedSpot) =>
@@ -33,7 +33,7 @@ class _LineChart extends StatelessWidget {
         ),
       );
 
-  FlTitlesData get titlesData1 => FlTitlesData(
+  FlTitlesData get titlesData => FlTitlesData(
         bottomTitles: AxisTitles(
           sideTitles: bottomTitles,
         ),
@@ -48,28 +48,10 @@ class _LineChart extends StatelessWidget {
         ),
       );
 
-  List<LineChartBarData> get lineBarsData1 => [
-        lineChartBarData1_1,
+  List<LineChartBarData> get lineBarsData => [
+        lineChartBarData,
       ];
 
-  LineTouchData get lineTouchData2 => const LineTouchData(
-        enabled: false,
-      );
-
-  FlTitlesData get titlesData2 => FlTitlesData(
-        bottomTitles: AxisTitles(
-          sideTitles: bottomTitles,
-        ),
-        rightTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: const AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: leftTitles(),
-        ),
-      );
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -168,7 +150,7 @@ class _LineChart extends StatelessWidget {
         ),
       );
 
-  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
+  LineChartBarData get lineChartBarData => LineChartBarData(
         isCurved: true,
         // color: AppColors.contentColorGreen,
         barWidth: 8,
@@ -183,15 +165,15 @@ class _LineChart extends StatelessWidget {
       );
 }
 
-class LineChartSample1 extends StatefulWidget {
+class SHLineChart extends StatefulWidget {
   final List<int> data;
-  const LineChartSample1({super.key, required this.data});
+  const SHLineChart({super.key, required this.data});
 
   @override
-  State<StatefulWidget> createState() => LineChartSample1State();
+  State<SHLineChart> createState() => SHLineChartState();
 }
 
-class LineChartSample1State extends State<LineChartSample1> {
+class SHLineChartState extends State<SHLineChart> {
   late bool isShowingMainData;
 
   @override

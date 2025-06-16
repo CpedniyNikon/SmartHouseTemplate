@@ -1,23 +1,17 @@
+import 'api_chart.dart';
+
 class ApiMetric {
-  final List<Map<String, List<int>>> data;
+  final List<ApiChart> data;
 
   ApiMetric({required this.data});
 
   factory ApiMetric.fromApi(Map<String, dynamic> map) {
-    // Parse the raw data into the correct structure
-    final rawData = map['data'] as List? ?? [];
-    final parsedData = rawData.map((item) {
-      if (item is Map<String, dynamic>) {
-        return item.map((key, value) {
-          if (value is List) {
-            return MapEntry(key, List<int>.from(value));
-          }
-          return MapEntry(key, <int>[]);
-        });
-      }
-      return <String, List<int>>{};
-    }).toList();
+    final dataList = map['data'] as List<dynamic>? ?? [];
 
-    return ApiMetric(data: parsedData);
+    final charts = dataList
+        .map((item) => ApiChart.fromApi(item as Map<String, dynamic>))
+        .toList();
+
+    return ApiMetric(data: charts);
   }
 }

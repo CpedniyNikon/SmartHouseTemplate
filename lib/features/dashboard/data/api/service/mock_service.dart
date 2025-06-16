@@ -17,9 +17,11 @@ class MockService implements Service {
     ];
 
     final response = {
-      'data': roomList
-          .map((room) => {room: List.generate(7, (_) => Random().nextInt(6))})
-          .toList()
+      'data': roomList.map((room) => {
+        'chartName': room,
+        'xAxis': List.generate(7, (_) => Random().nextInt(6)),
+        'yAxis': List.generate(7, (_) => Random().nextInt(6)),
+      }).toList()
     };
     return ApiMetric.fromApi(response);
   }

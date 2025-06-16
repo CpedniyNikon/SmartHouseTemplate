@@ -3,9 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:vikrf_thesis/core/constants/app_dimens.dart';
 import 'package:vikrf_thesis/features/dashboard/presentation/bloc/dashboard_bloc.dart';
 import 'package:vikrf_thesis/features/dashboard/presentation/widgets/chart_holder.dart';
-import 'package:vikrf_thesis/features/dashboard/presentation/widgets/samples/line_chart_sample.dart';
+import 'package:vikrf_thesis/features/dashboard/presentation/widgets/samples/sh_line_chart.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -38,20 +39,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
           builder: (context, state) {
         if (state is DashboardBlocStateFetched) {
           return MasonryGridView.builder(
-            itemCount: state.data.length,
+            itemCount: state.metrics.data.length,
             shrinkWrap: true,
-            padding: const EdgeInsets.only(
-                // left: AppDimens.chartSamplesSpace,
-                // right: AppDimens.chartSamplesSpace,
-                // top: AppDimens.chartSamplesSpace,
-                // bottom: AppDimens.chartSamplesSpace + 68,
+            padding: EdgeInsets.only(
+                left: AppDimens.chartSamplesSpace,
+                right: AppDimens.chartSamplesSpace,
+                top: AppDimens.chartSamplesSpace,
+                bottom: AppDimens.chartSamplesSpace + 68,
                 ),
-            // crossAxisSpacing: AppDimens.chartSamplesSpace,
-            // mainAxisSpacing: AppDimens.chartSamplesSpace,
+            crossAxisSpacing: AppDimens.chartSamplesSpace,
+            mainAxisSpacing: AppDimens.chartSamplesSpace,
             itemBuilder: (BuildContext context, int index) {
               return ChartHolder(
-                chartName: state.data[index].keys.first,
-                widget: LineChartSample1(data: state.data[index].values.first),
+                chartName: state.metrics.data[index].chartName,
+                widget: SHLineChart(data: state.metrics.data[index].xAxis),
               );
             },
             gridDelegate: const SliverSimpleGridDelegateWithMaxCrossAxisExtent(

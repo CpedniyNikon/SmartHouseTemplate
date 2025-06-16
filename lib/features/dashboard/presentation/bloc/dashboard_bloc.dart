@@ -21,6 +21,6 @@ class DashboardBloc extends Bloc<DashboardBlocEvent, DashboardBlocState> {
       DashboardBlocEventFetch event, Emitter<DashboardBlocState> emit) async {
     final token = await _authRepository.getToken();
     MetricEntity data = await _dashboardRepository.fetch(uuid: token);
-    emit(DashboardBlocStateFetched(data.data));
+    emit(DashboardBlocStateFetched(data));
   }
 }

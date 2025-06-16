@@ -36,9 +36,12 @@ class AppMenuState extends State<AppMenu> {
         children: [
           Row(
             children: [
+              const SizedBox(
+                width: 36,
+              ),
               SizedBox(
-                width: 160,
-                height: 160,
+                width: 80,
+                height: 80,
                 child: SvgPicture.asset(
                   AppAssets.vikLogoText,
                   colorFilter: ColorFilter.mode(
@@ -49,10 +52,12 @@ class AppMenuState extends State<AppMenu> {
               const Expanded(
                 child: Text(
                   'Smart-House',
+                  textAlign: TextAlign.center,
                 ),
               )
             ],
           ),
+          const Divider(),
           Expanded(
             child: ListView.builder(
               itemBuilder: (context, position) {
